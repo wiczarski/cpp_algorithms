@@ -9,18 +9,17 @@ public:
         unordered_map<int, int> seen;
 
         for(int i = 0; i < (int)nums.size(); i++) {
-            int value = nums[i];
-            int need = target - value;
+            int curValue = nums[i];
+            int complement = target - curValue;
 
-            auto found = seen.find(need);
+            auto found = seen.find(complement);
             if (found != seen.end()) {
                 return {found->second, i};
             }
 
-            seen[value] = i;
+            seen[curValue] = i;
         }
 
         return {};
-            
     }
 };
