@@ -1,0 +1,27 @@
+#include <vector>
+
+using namespace std;
+
+class Solution {
+public:
+    int scoreDifference(vector<int>& nums) {
+        int first_player_score = 0;
+        int second_player_score = 0;
+        bool first_player_active = true;
+        for(int i = 0; i < nums.size(); i++) {
+            if (nums[i] % 2 == 1) {
+                first_player_active = !first_player_active;
+            }
+            if (i % 6 == 5) {
+                first_player_active = !first_player_active;
+            }
+            if (first_player_active) {
+                first_player_score += nums[i];
+            } else {
+                second_player_score += nums[i];
+            }
+        }
+
+        return first_player_score - second_player_score;
+    }
+};
